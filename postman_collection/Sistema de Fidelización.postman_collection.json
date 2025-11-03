@@ -1,0 +1,847 @@
+{
+	"info": {
+		"_postman_id": "c442ec3b-bdd3-4189-9cc7-a3ea4577914e",
+		"name": "Sistema de Fidelización",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49630358",
+		"_collection_link": "https://kamiladiaz-2dario-296049.postman.co/workspace/Kamila-Diaz's-Workspace~f7acad93-8a99-4e50-847c-70589a4c3d0b/collection/49630358-c442ec3b-bdd3-4189-9cc7-a3ea4577914e?action=share&source=collection_link&creator=49630358"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Consultar cliente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/cliente?id_cliente=eq.{{p_cliente_id}}&select=*",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"cliente"
+							],
+							"query": [
+								{
+									"key": "id_cliente",
+									"value": "eq.{{p_cliente_id}}"
+								},
+								{
+									"key": "select",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"{{p_nombre}}\",\r\n  \"apellido\": \"{{p_apellido}}\",\r\n  \"nro_documento\": {{p_nro_documento}},\r\n  \"email\": \"{{p_email}}\",\r\n  \"telefono\": \"{{p_telefono}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/cliente?select=*",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"cliente"
+							],
+							"query": [
+								{
+									"key": "select",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"telefono\": \"0981999888\",\r\n  \"email\": \"jperez123@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/cliente?id_cliente=eq.{{p_cliente_id}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"cliente"
+							],
+							"query": [
+								{
+									"key": "id_cliente",
+									"value": "eq.{{p_cliente_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/cliente?id_cliente=eq.{{p_cliente_id}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"cliente"
+							],
+							"query": [
+								{
+									"key": "id_cliente",
+									"value": "eq.{{p_cliente_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Concepto de punto",
+			"item": [
+				{
+					"name": "Consultar concepto",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/concepto_punto?id_concepto=eq.{{p_id_concepto}}&select=*",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"concepto_punto"
+							],
+							"query": [
+								{
+									"key": "id_concepto",
+									"value": "eq.{{p_id_concepto}}"
+								},
+								{
+									"key": "select",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear concepto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descripcion\": \"{{p_descripcion}}\",\r\n  \"puntos_requeridos\": {{p_puntos_requeridos}},\r\n  \"estado\": {{p_estado}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/concepto_punto",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"concepto_punto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar concepto",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"puntos_requeridos\": 200,\r\n  \"estado\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/concepto_punto?id_concepto=eq.{{p_id_concepto}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"concepto_punto"
+							],
+							"query": [
+								{
+									"key": "id_concepto",
+									"value": "eq.{{p_id_concepto}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar concepto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/concepto_punto?id_concepto=eq.{{p_id_concepto}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"concepto_punto"
+							],
+							"query": [
+								{
+									"key": "id_concepto",
+									"value": "eq.{{p_id_concepto}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Regla de punto",
+			"item": [
+				{
+					"name": "Consultar regla",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/regla_punto?id_regla=eq.{{p_id_regla}}&select=*",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"regla_punto"
+							],
+							"query": [
+								{
+									"key": "id_regla",
+									"value": "eq.{{p_id_regla}}"
+								},
+								{
+									"key": "select",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear regla",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descripcion\": \"{{p_descripcion_regla}}\",\r\n  \"desde_gs\": {{p_desde_gs}},\r\n  \"hasta_gs\": {{p_hasta_gs}},\r\n  \"cada_gs\": {{p_cada_gs}},\r\n  \"otorga_pts\": {{p_otorga_pts}},\r\n  \"estado\": {{p_estado_regla}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/regla_punto",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"regla_punto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar regla",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hasta_gs\": 300000,\r\n  \"otorga_pts\": 30,\r\n  \"estado\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/regla_punto?id_regla=eq.{{p_id_regla}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"regla_punto"
+							],
+							"query": [
+								{
+									"key": "id_regla",
+									"value": "eq.{{p_id_regla}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar regla",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/regla_punto?id_regla=eq.{{p_id_regla}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"regla_punto"
+							],
+							"query": [
+								{
+									"key": "id_regla",
+									"value": "eq.{{p_id_regla}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vencimiento de punto",
+			"item": [
+				{
+					"name": "Consultar vencimiento",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/vencimiento_punto?id_vencimiento=eq.{{p_id_vencimiento}}&select=*",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"vencimiento_punto"
+							],
+							"query": [
+								{
+									"key": "id_vencimiento",
+									"value": "eq.{{p_id_vencimiento}}"
+								},
+								{
+									"key": "select",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear vencimiento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fecha_inicio\": \"{{p_fecha_inicio}}\",\r\n  \"fecha_fin\": \"{{p_fecha_fin}}\",\r\n  \"validez_dias\": {{p_validez_dias}},\r\n  \"estado\": {{p_estado_vencimiento}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/vencimiento_punto",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"vencimiento_punto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar vencimiento",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"validez_dias\": 200,\r\n  \"estado\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/vencimiento_punto?id_vencimiento=eq.{{p_id_vencimiento}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"vencimiento_punto"
+							],
+							"query": [
+								{
+									"key": "id_vencimiento",
+									"value": "eq.{{p_id_vencimiento}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar vencimiento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{p_apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{p_auth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{p_base_url}}/rest/v1/vencimiento_punto?id_vencimiento=eq.{{p_id_vencimiento}}",
+							"host": [
+								"{{p_base_url}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"vencimiento_punto"
+							],
+							"query": [
+								{
+									"key": "id_vencimiento",
+									"value": "eq.{{p_id_vencimiento}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cargar_puntos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "{{p_apikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{p_auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"p_id_cliente\": {{p_cliente_id}},\r\n  \"p_monto\": {{p_monto}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{p_base_url}}/rest/v1/rpc/cargar_puntos",
+					"host": [
+						"{{p_base_url}}"
+					],
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"cargar_puntos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usar_puntos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "{{p_apikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{p_auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"p_id_cliente\": {{p_cliente_id}},\r\n  \"p_id_concepto\": {{p_id_concepto}},\r\n  \"p_puntos_utilizar\": {{p_puntos_utilizar}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{p_base_url}}/rest/v1/rpc/usar_puntos",
+					"host": [
+						"{{p_base_url}}"
+					],
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"usar_puntos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
