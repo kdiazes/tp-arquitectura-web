@@ -821,7 +821,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"p_id_cliente\": {{p_cliente_id}},\r\n  \"p_id_concepto\": {{p_id_concepto}},\r\n  \"p_puntos_utilizar\": {{p_puntos_utilizar}}\r\n}",
+					"raw": "{\r\n  \"p_id_cliente\": {{p_cliente_id}},\r\n  \"p_id_concepto\": {{p_id_concepto}}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
