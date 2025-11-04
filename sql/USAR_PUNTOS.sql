@@ -1,29 +1,38 @@
-create or replace function public.usar_puntos(
+CREATE OR REPLACE FUNCTION public.usar_puntos(
     p_id_cliente bigint,
-    p_id_concepto bigint,
-    p_puntos_utilizar int
+    p_id_concepto bigint
 )
-returns json
-language plpgsql
-security definer
-as $$
+RETURNS json
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
 declare
     v_bolsa record;
-    v_restante int := p_puntos_utilizar;
+    v_puntos_requeridos int; -- <--- NUEVA VARIABLE
+    v_restante int;
     v_utilizado int;
     v_id_uso int;
     v_result json;
 begin
-    -- Validar cliente y concepto
+    -- Validar cliente
     if not exists (select 1 from cliente where id_cliente = p_id_cliente) then
         raise exception 'El cliente con ID % no existe.', p_id_cliente;
     end if;
 
-    if not exists (select 1 from concepto_punto where id_concepto = p_id_concepto) then
-        raise exception 'El concepto con ID % no existe.', p_id_concepto;
+    -- Validar concepto Y OBTENER PUNTOS REQUERIDOS
+    select puntos_requeridos into v_puntos_requeridos
+    from concepto_punto
+    where id_concepto = p_id_concepto
+      and estado = true;
+
+    if not found then
+        raise exception 'El concepto con ID % no existe o está inactivo.', p_id_concepto;
     end if;
 
-    -- Crear cabecera del uso
+    -- Asignar puntos requeridos a la variable restante
+    v_restante := v_puntos_requeridos;
+
+    -- Crear cabecera del uso (ahora usa la variable consultada)
     insert into uso_punto_cabecera (
         id_cliente,
         id_concepto,
@@ -34,7 +43,7 @@ begin
         p_id_cliente,
         p_id_concepto,
         current_timestamp,
-        p_puntos_utilizar
+        v_puntos_requeridos -- <--- CAMBIO
     )
     returning id_uso into v_id_uso;
 
@@ -75,7 +84,9 @@ begin
         v_restante := v_restante - v_utilizado;
     end loop;
 
+    -- Si v_restante > 0, el cliente no tenía saldo suficiente
     if v_restante > 0 then
+        -- (Importante: ¡Esto cancela toda la transacción!)
         raise exception 'El cliente no tiene puntos suficientes (% faltantes)', v_restante;
     end if;
 
@@ -84,7 +95,7 @@ begin
         'id_uso', v_id_uso,
         'id_cliente', p_id_cliente,
         'id_concepto', p_id_concepto,
-        'puntos_usados', p_puntos_utilizar,
+        'puntos_usados', v_puntos_requeridos, -- <--- CAMBIO
         'fecha', current_timestamp
     )
     into v_result;
